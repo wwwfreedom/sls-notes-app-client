@@ -1,0 +1,23 @@
+{
+  "parser": "babel-eslint",
+  "plugins": [
+    "react",
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true,
+      "modules": true
+    }
+  },
+  "extends" : [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "airbnb",
+    "prettier"
+  ],
+  "rules" : {
+    "react/prop-types": 0,
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/no-did-mount-set-state": 0
+  }
+}

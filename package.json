@@ -11,6 +11,14 @@
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.4"
   },
+  "devDependencies": {
+    "eslint": "^4.17.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.6.1"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
