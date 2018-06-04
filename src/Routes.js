@@ -7,6 +7,7 @@ import NotFound from "./containers/NotFound.js"
 import Signup from "./containers/Signup"
 import ConfirmSignup from "./containers/ConfirmSignup"
 import NewNote from "./containers/NewNote.js"
+import Notes from "./containers/Notes"
 
 export default ({ childProps }) => (
   <Switch>
@@ -19,6 +20,13 @@ export default ({ childProps }) => (
       component={ConfirmSignup}
       props={childProps}
     />
+    <AppliedRoute
+      path="/notes/:id"
+      exact
+      component={Notes}
+      props={childProps}
+    />
+
     <AppliedRoute
       path="/notes/new"
       exact
