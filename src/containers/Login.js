@@ -36,7 +36,13 @@ export default class Login extends Component {
       // redirect to home page on successful login
       this.props.history.push("/")
     } catch (e) {
+      if(e.code === "UserNotConfirmedException") {
+        Auth.resendSignUp(this.state.email).then(() => {
+          this.props.history.push(`/confirm-signup/${this.state.email}`)
+        })
+      }
       alert(e.message)
+      
       this.setState({ isLoading: false })
     }
   }
