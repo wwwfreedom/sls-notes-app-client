@@ -29,6 +29,7 @@ export default class Notes extends Component {
       const { content, attachment } = note
 
       if (attachment) {
+        // this return the key to get to the object in s3
         attachmentURL = await Storage.vault.get(attachment)
       }
 
@@ -72,6 +73,7 @@ export default class Notes extends Component {
 
   handleSubmit = async event => {
     let attachment
+    const { attachmentURL } = this.state
 
     event.preventDefault()
 
@@ -84,6 +86,10 @@ export default class Notes extends Component {
 
     try {
       if (this.file) {
+        // remove existing file if there's is existing file if theres attachmentURL then there is an existing file
+        if (attachmentURL) {
+          await Storage.vault.remove(this.state.note.attachment)
+        }
         attachment = await s3Upload(this.file)
       }
 
