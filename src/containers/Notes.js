@@ -49,6 +49,10 @@ export default class Notes extends Component {
     })
   }
 
+  deleteNote() {
+    return API.del("notes", `/notes/${this.props.match.params.id}`)
+  }
+
   getNote() {
     return API.get("notes", `/notes/${this.props.match.params.id}`)
   }
@@ -116,6 +120,17 @@ export default class Notes extends Component {
     }
 
     this.setState({ isDeleting: true })
+
+    try {
+      await this.deleteNote()
+      if (this.state.attachmentURL) {
+        await Storage.vault.remove(this.state.note.attachment)
+      }
+      this.props.history.push("/")
+    } catch (e) {
+      alert(e)
+      this.setState({ isDeleting: false })
+    }
   }
 
   render() {
