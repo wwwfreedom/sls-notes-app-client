@@ -33,8 +33,6 @@ export default class Login extends Component {
     try {
       await Auth.signIn(this.state.email, this.state.password)
       this.props.userHasAuthenticated(true)
-      // redirect to home page on successful login
-      this.props.history.push("/")
     } catch (e) {
       if(e.code === "UserNotConfirmedException") {
         Auth.resendSignUp(this.state.email).then(() => {
